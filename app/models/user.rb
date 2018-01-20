@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :contributions
+
   def self.create_auth_user (provider_data)
     uid = provider_data[:uid]
     screen_name = provider_data[:info][:nickname]
