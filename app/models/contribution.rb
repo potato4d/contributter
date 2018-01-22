@@ -14,8 +14,8 @@ class Contribution < ApplicationRecord
     client = Twitter::REST::Client.new do |config|
       config.consumer_key        = ENV['TWITTER_CK']
       config.consumer_secret     = ENV['TWITTER_CS']
-      config.access_token        = user.access_token
-      config.access_token_secret = user.access_secret
+      config.access_token        = user.decrypted_token
+      config.access_token_secret = user.decrypted_secret
     end
 
     tweet = client.update("[Contributter] " + user.github_id + "さんの" + date + "のContribution数は " + count.to_s + "でした。")
