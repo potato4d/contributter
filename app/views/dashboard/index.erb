@@ -1,1 +1,101 @@
-<img src="<%= @user.icon_url %>">
+<nav class="navbar is-transparent">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <%= image_tag('logo.svg') %>
+      </a>
+      <div class="navbar-burger burger" data-target="navbar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="navbar" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item is-active" href="/dashboard">
+          Dashboard
+        </a>
+        <a class="navbar-item" href="/dashboard/settings">
+          Settings
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">
+            @<%= @user.screen_name %>
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="/dashboard/logout">
+              ログアウト
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-3">
+        <div class="card">
+          <div class="card-image">
+            <figure class="has-text-centered profile-icon-area">
+              <img class="image is-96x96" src="<%= @user.icon_url %>">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media has-text-centered">
+              <div class="media-content has-text-centered">
+                <p class="title is-4"><%= @user.screen_name %></p>
+              </div>
+            </div>
+
+            <div class="content has-text-centered">
+              <% if @user.github_id %>
+                <span>
+                  <span class="icon"><i class="fa fa-github"></i></span><%= @user.github_id %>
+                </span>
+              <% else %>
+                <a href="/dashboard/settings" class="is-size-7">
+                  GitHub IDが未設定です
+                  <i class="fa fa-external-link"></i>
+                </a>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-9">
+        <h2 class="title">Recent contributions</h2>
+        <div class="card">
+          <div class="card-content">
+            <% @contributions.each do |contribution| %>
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <p>
+                      <strong><%= contribution.created_at.strftime('%Y/%m/%d') %></strong>
+                      <br>
+                      [Contributter] <%= @user.screen_name %> さんの <%= contribution.created_at.strftime('%Y/%m/%d') %> の Contribution 数は <%= contribution.count %> でした。
+                    </p>
+                  </div>
+                  <nav class="level is-mobile">
+                    <div class="level-left">
+                      <a class="level-item" href="<%= contribution.tweet_url %>">
+                        <%= contribution.tweet_url %>
+                      </a>
+                    </div>
+                  </nav>
+                </div>
+              </article>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
