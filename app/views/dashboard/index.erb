@@ -81,9 +81,9 @@
                 <div class="media-content">
                   <div class="content">
                     <p>
-                      <strong><%= contribution.created_at.strftime('%Y/%m/%d') %></strong>
+                      <strong><%= contribution.target_date.strftime('%Y/%m/%d') %></strong>
                       <br>
-                      [Contributter] <%= @user.screen_name %> さんの <%= contribution.created_at.strftime('%Y/%m/%d') %> の Contribution 数は <%= contribution.count %> でした。
+                      [Contributter] <%= @user.screen_name %> さんの <%= contribution.target_date.strftime('%Y/%m/%d') %> の Contribution 数は <%= contribution.count %> でした。
                     </p>
                   </div>
                   <nav class="level is-mobile">
