@@ -14,9 +14,12 @@ class DashboardController < ApplicationController
   def update_settings
     user = User.find_or_create_by(uid: current_user.uid)
     user.github_id = params['github_id']
-    user.save
 
-    redirect_to '/dashboard/settings'
+    if user.save
+      redirect_to '/dashboard/settings', :flash => { :success => '更新が完了しました。' }
+    else
+      redirect_to '/dashboard/settings', :flash => { :danger => '問題が発生しました。' }
+    end
   end
 
   def logout

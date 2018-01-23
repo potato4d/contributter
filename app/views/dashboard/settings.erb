@@ -41,6 +41,11 @@
   <div class="container">
     <div class="columns">
       <div class="column is-half is-offset-one-quarter">
+        <% flash.each do |type, msg|%>
+          <div class="notification is-<%= type %> has-text-centered">
+            <%= msg %>
+          </div>
+        <% end %>
         <div class="card">
           <div class="card-image">
             <figure class="has-text-centered profile-icon-area">
