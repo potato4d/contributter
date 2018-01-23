@@ -9,8 +9,8 @@ class Contribution < ApplicationRecord
       # Scraping
       # TODO: Modulize
       html = Nokogiri::HTML(open('https://github.com/users/' + user.github_id + '/contributions'))
-      date = html.css('rect')[-2].attributes['data-date'].value
-      count = html.css('rect')[-2].attributes['data-count'].value.to_i
+      date = html.css('rect')[-1].attributes['data-date'].value
+      count = html.css('rect')[-1].attributes['data-count'].value.to_i
 
       # Tweet
       # TODO: Modulize
