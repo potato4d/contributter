@@ -1,0 +1,89 @@
+<nav class="navbar is-transparent">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <%= image_tag('logo.svg') %>
+      </a>
+      <div class="navbar-burger burger" data-target="navbar">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+
+    <div id="navbar" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/dashboard">
+          Dashboard
+        </a>
+        <a class="navbar-item is-active" href="/dashboard/settings">
+          Settings
+        </a>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">
+            @<%= @user.screen_name %>
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item" href="/dashboard/logout">
+              ログアウト
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-half is-offset-one-quarter">
+        <% flash.each do |type, msg|%>
+          <div class="notification is-<%= type %> has-text-centered">
+            <%= msg %>
+          </div>
+        <% end %>
+        <div class="card">
+          <div class="card-image">
+            <figure class="has-text-centered profile-icon-area">
+              <img class="image is-96x96" src="<%= @user.icon_url %>">
+            </figure>
+          </div>
+          <div class="card-content">
+            <div class="media has-text-centered">
+              <div class="media-content has-text-centered">
+                <p class="title is-4"><%= @user.screen_name %></p>
+              </div>
+            </div>
+            <div class="content">
+              <%= form_tag('/dashboard/settings') do |f| %>
+                <div class="field">
+                  <label class="label">Twitter ID</label>
+                  <div class="control">
+                    <input class="input" type="text" readonly value="@<%= @user.screen_name %>">
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label class="label">GitHub ID</label>
+                  <div class="control">
+                    <input class="input" type="text" name="github_id" value="<%= @user.github_id %>" placeholder="e.g.) potato4d">
+                  </div>
+                </div>
+
+                <div class="field is-grouped">
+                  <div class="control has-text-centered">
+                    <button class="button is-link">Save</button>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

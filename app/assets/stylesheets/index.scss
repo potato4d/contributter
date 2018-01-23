@@ -1,0 +1,58 @@
+#index {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0fffa;
+
+  .main {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .twitter-tweet {
+    &, > * {
+      color: transparent;
+    }
+  }
+
+  .twitter-wrapper {
+    min-width: 531px;
+    max-width: 100%;
+    min-height: 157px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  .subtitle {
+    color: #196127;
+    letter-spacing: 1.8px;
+  }
+
+  @media (min-width: 768px) {
+    .column.is-7 {
+      min-width: 523.83px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .columns {
+      margin: 0;
+      width: 100%;
+    }
+  }
+
+  a.button.is-primary.is-large{
+    cursor: pointer;
+  }
+}
