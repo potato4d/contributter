@@ -1,0 +1,42 @@
+<div class="wrapper" id="index">
+  <main class="main">
+    <div class="columns" style="align-items: center;">
+      <div class="column is-3 is-offset-2">
+        <h1 class="title has-text-centered">
+          <%= image_tag('logo_large.svg') %>
+        </h1>
+        <h2 class="subtitle has-text-centered" style="padding-bottom: 24px;">
+          貢献を、つぶやこう
+        </h2>
+      </div>
+      <div class="column is-5">
+
+        <div class="twitter-wrapper">
+          <blockquote class="twitter-tweet" data-lang="en">
+            <p lang="ja" dir="ltr">[GitHub] 2018/1/21の Contribution 数は 3 でした。</p>&mdash; potato4d (@potato4d) <a href="https://twitter.com/potato4d/status/955456453438943232?ref_src=twsrc%5Etfw">January 22, 2018</a>
+          </blockquote>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+
+        <article class="message is-info">
+          <div class="message-body" style="border: 0;">
+            Contributterは、毎日0時に、あなたが前日GitHub上で行ったContribution数を計測して呟いてくれるWebサービスです。<br>
+            Twitter OAuthで連携し、GitHub IDを入力するだけで、計測を開始できます。
+          </div>
+        </article>
+
+        <p class="has-text-centered">
+          <% if @user %>
+            <a href="/dashboard" class="button is-primary is-large">
+              ダッシュボードへ
+            </a>
+          <% else %>
+            <a href="/auth/twitter" class="button is-primary is-large">
+              計測をはじめる
+            </a>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  </main>
+</div>

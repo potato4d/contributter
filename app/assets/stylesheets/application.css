@@ -18,6 +18,7 @@ html, body {
   background: #fcfcff;
   min-width: 100vw;
   min-height: 100vh;
+  font-family: -apple-system, Hiragino Sans, YuGothic, Meiryo;
 }
 
 .profile-icon-area {

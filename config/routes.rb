@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 
   # Admin routes
   get '/admin/crawl_and_tweet' => 'admin#crawl_and_tweet'
+
+
+  get '/' => 'index#index'
 end
