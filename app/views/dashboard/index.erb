@@ -75,6 +75,9 @@
           <div class="card-content">
             <% @contributions.each do |contribution| %>
               <article class="media">
+                <div class="media-left">
+                  <img class="image is-48x48 has-rounded" src="<%= @user.icon_url %>">
+                </div>
                 <div class="media-content">
                   <div class="content">
                     <p>

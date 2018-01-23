@@ -58,3 +58,7 @@ a.navbar-item.is-active, a.navbar-item:hover, a.navbar-link.is-active, a.navbar-
 .navbar-link::after {
   border-color: #239A3B;
 }
+
+.has-rounded {
+  border-radius: 50%;
+}
