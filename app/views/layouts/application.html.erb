@@ -18,10 +18,10 @@
 
     <meta name="twitter:card" content="summary" />
     <link href="/favicon.png" rel="icon" type="image/png">
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= yield %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
