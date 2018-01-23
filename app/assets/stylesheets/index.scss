@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f0fffa;
+  background: #f2fffc;
 
   .main {
     min-width: 100vw;
@@ -35,8 +35,9 @@
   }
 
   .subtitle {
-    color: #196127;
-    letter-spacing: 1.8px;
+    color: #024617;
+    letter-spacing: 0.2px;
+    font-weight: 200;
   }
 
   @media (min-width: 768px) {
