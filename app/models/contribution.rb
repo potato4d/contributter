@@ -30,7 +30,8 @@ class Contribution < ApplicationRecord
       contribution.target_date = date
       contribution.tweet_url = 'https://twitter.com/' + user.screen_name + '/status/' + tweet.id.to_s
       contribution.save
-    rescue
+    rescue => e
+      logger.debug(e)
       # for fail_count increment
       false
     end
