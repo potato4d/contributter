@@ -1,3 +1,6 @@
+require 'faraday'
+require 'date'
+
 class AdminController < ApplicationController
 
   before_action :admin_auth
@@ -24,6 +27,25 @@ class AdminController < ApplicationController
       else
         fail_count += 1
       end
+    end
+
+    # Post slack
+    # TODO: Modulize
+
+    text = "<@" + ENV['OWNER_NAME'] + ">\n" +
+      "[Contributter] " + Date.today.strftime("%Y/%m/%d") + "のバッチ実行結果\n\n" +
+      "```\n" +
+      "SUCCESS: " + success_count.to_s + "\n" +
+      "SKIP:    " + skip_count.to_s + "\n" +
+      "FAIL:    " + fail_count.to_s + "\n" +
+      "TOTAL:   " + total_count.to_s + "" +
+      "```"
+
+    conn = Faraday.new(:url => ENV['SLACK_API_ROOT'])
+    conn.post do |req|
+      req.url ENV["SLACK_API_ENDPOINT"]
+      req.headers['Content-Type'] = 'application/json'
+      req.body = '{"text": "' + text + '", "channel": "' + ENV['SLACK_CHANNEL'] + '"}'
     end
 
     render json: {

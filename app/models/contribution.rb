@@ -21,13 +21,13 @@ class Contribution < ApplicationRecord
         config.access_token_secret = user.decrypted_secret
       end
 
-      tweet = client.update("[Contributter] " + user.github_id + "さんの" + date + "のContribution数は " + count.to_s + "でした。")
+      # tweet = client.update("[Contributter] " + user.github_id + "さんの" + date + "のContribution数は " + count.to_s + "でした。")
 
       # Create DataModel
       contribution = Contribution.new
       contribution.user_id = user.id
       contribution.count = count
-      contribution.tweet_url = 'https://twitter.com/' + user.screen_name + '/status/' + tweet.id.to_s
+      # contribution.tweet_url = 'https://twitter.com/' + user.screen_name + '/status/' + tweet.id.to_s
       contribution.save
     rescue
       # for fail_count increment
