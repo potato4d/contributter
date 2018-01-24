@@ -20,6 +20,7 @@ RUN apk update && \
       postgresql-dev \
       ruby-dev \
       yaml-dev \
+      nodejs \
       zlib-dev && \
     apk add --update --no-cache \
       bash \
