@@ -25,7 +25,6 @@
   }
 
   .twitter-wrapper {
-    min-width: 531px;
     max-width: 100%;
     min-height: 157px;
     display: flex;
@@ -43,6 +42,9 @@
   @media (min-width: 768px) {
     .column.is-7 {
       min-width: 523.83px;
+    }
+    .twitter-wrapper {
+      min-width: 531px;
     }
   }
 
