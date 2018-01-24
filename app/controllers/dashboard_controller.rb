@@ -1,4 +1,3 @@
-require 'pry'
 class DashboardController < ApplicationController
   before_action :auth_guard
 
@@ -29,7 +28,11 @@ class DashboardController < ApplicationController
 
   private
   def current_user
-    User.find(session[:user_id]) if session[:user_id]
+    begin
+      User.find(session[:user_id]) if session[:user_id]
+    rescue
+      false
+    end
   end
 
   def auth_guard

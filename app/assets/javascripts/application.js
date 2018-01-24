@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 
 document.addEventListener("turbolinks:load", function() {

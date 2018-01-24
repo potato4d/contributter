@@ -1,4 +1,3 @@
-require 'pry'
 class User < ApplicationRecord
   has_many :contributions
 
@@ -8,7 +7,6 @@ class User < ApplicationRecord
     uid = provider_data[:uid]
     screen_name = provider_data[:info][:nickname]
     icon_url = provider_data[:info][:image].gsub(/http:\/\//, 'https://')
-    binding.pry
     access_token = provider_data[:credentials][:token]
     access_secret = provider_data[:credentials][:secret]
 

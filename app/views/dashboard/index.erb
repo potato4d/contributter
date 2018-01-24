@@ -68,6 +68,19 @@
             </div>
           </div>
         </div>
+
+        <% if ENV['AD_SLOT'] and ENV['AD_CLIENT'] %>
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- contributter -->
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="<%= ENV['AD_CLIENT'] %>"
+             data-ad-slot="<%= ENV['AD_SLOT'] %>"
+             data-ad-format="auto"></ins>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+        <% end %>
       </div>
       <div class="column is-9">
         <h2 class="title">Recent contributions</h2>
