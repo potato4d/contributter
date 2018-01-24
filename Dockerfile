@@ -16,6 +16,7 @@ RUN apk update && \
       linux-headers \
       libxml2-dev \
       libxslt-dev \
+      mariadb-dev \
       postgresql-dev \
       ruby-dev \
       yaml-dev \
@@ -24,6 +25,7 @@ RUN apk update && \
       bash \
       git \
       openssh \
+      mariadb-client \
       postgresql \
       ruby-json \
       tzdata \
