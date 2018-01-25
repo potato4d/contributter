@@ -35,6 +35,7 @@ RUN apk update && \
 COPY . .
 RUN bundle install
 
+RUN npm i -g yarn
 RUN rails assets:precompile RAILS_ENV=production
 
 EXPOSE 3000
