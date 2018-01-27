@@ -52,9 +52,9 @@ class AdminController < ApplicationController
       render json: {
         result: true
       }
-    rescue
+    rescue => e
       render json: {
-        result: false
+        result: e
       }
     end
   end
