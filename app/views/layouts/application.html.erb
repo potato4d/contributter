@@ -23,5 +23,14 @@
 
   <body>
     <%= yield %>
+    <% if ENV['RAILS_ENV'] == 'production' %>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV['GA_ID'] %>"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '<%= ENV['GA_ID']%>');
+      </script>
+    <% end %>
   </body>
 </html>
