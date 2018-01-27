@@ -1,6 +1,6 @@
-<center>
+<p align="center">
   <img src="https://user-images.githubusercontent.com/6993514/35467986-8ff4c902-0359-11e8-98ac-04b28f99a408.png" alt="Contributter">
-</center>
+</p>
 
 
 Let's tweet your contributions.  
