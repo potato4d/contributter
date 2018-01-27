@@ -14,7 +14,7 @@
 // require turbolinks
 //= require_tree .
 
-document.addEventListener("turbolinks:load", function() {
+document.addEventListener("load", function() {
   const $ = function(el){return document.querySelector(el)}
 
   if ($('.navbar-burger')) {
