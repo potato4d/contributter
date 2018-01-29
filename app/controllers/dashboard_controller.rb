@@ -15,9 +15,9 @@ class DashboardController < ApplicationController
     user.github_id = params['github_id']
 
     if user.save
-      redirect_to 'https://contributter.potato4d.me/dashboard/settings', :flash => { :success => '更新が完了しました。' }
+      redirect_to ENV['ROOT_DOMAIN'] + '/settings', :flash => { :success => '更新が完了しました。' }
     else
-      redirect_to 'https://contributter.potato4d.me/dashboard/settings', :flash => { :danger => '問題が発生しました。' }
+      redirect_to ENV['ROOT_DOMAIN'] + '/settings', :flash => { :danger => '問題が発生しました。' }
     end
   end
 
