@@ -21,7 +21,7 @@ class Contribution < ApplicationRecord
         config.access_token_secret = user.decrypted_secret
       end
 
-      tweet = client.update("[Contributter] " + user.github_id + "さんの" + date + "のContribution数は " + count.to_s + "でした。")
+      tweet = client.update("[Contributter] " + user.github_id + "さんの" + date + "のContribution数は " + count.to_s + "でした。\n#contributter")
 
       # Create DataModel
       contribution = Contribution.new
