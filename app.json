@@ -1,0 +1,79 @@
+{
+  "name": "contributter",
+  "description": "",
+  "scripts": {},
+  "env": {
+    "AD_CLIENT": {
+      "required": true
+    },
+    "AD_SLOT": {
+      "required": true
+    },
+    "ADMIN_TOKEN": {
+      "required": true
+    },
+    "DATABASE_TYPE": {
+      "required": true
+    },
+    "DATABASE_URL": {
+      "required": true
+    },
+    "GA_ID": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "OWNER_NAME": {
+      "required": true
+    },
+    "PAPERTRAIL_API_TOKEN": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SECURITY_SALT": {
+      "required": true
+    },
+    "SLACK_API_ENDPOINT": {
+      "required": true
+    },
+    "SLACK_API_ROOT": {
+      "required": true
+    },
+    "SLACK_CHANNEL": {
+      "required": true
+    },
+    "TWITTER_CK": {
+      "required": true
+    },
+    "TWITTER_CS": {
+      "required": true
+    },
+    "TZ": "Asia/Tokyo"
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
