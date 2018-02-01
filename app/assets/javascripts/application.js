@@ -16,9 +16,11 @@
 
 const $ = function(el){return document.querySelector(el)}
 
-if ($('.navbar-burger')) {
-  $('.navbar-burger').addEventListener('click', function () {
-    $('.navbar-burger').classList.toggle('is-active')
-    $('#navbar').classList.toggle('is-active')
-  })
-}
+window.addEventListener('load', function () {
+  if ($('.navbar-burger')) {
+    $('.navbar-burger').addEventListener('click', function () {
+      $('.navbar-burger').classList.toggle('is-active')
+      $('#navbar').classList.toggle('is-active')
+    })
+  }
+})
