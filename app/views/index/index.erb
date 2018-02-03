@@ -17,7 +17,7 @@
 
         <div class="twitter-wrapper">
           <blockquote class="twitter-tweet" data-lang="en">
-            <p lang="ja" dir="ltr">[GitHub] 2018/1/21の Contribution 数は 3 でした。</p>&mdash; potato4d (@potato4d) <a href="https://twitter.com/potato4d/status/955456453438943232?ref_src=twsrc%5Etfw">January 22, 2018</a>
+            <p lang="ja" dir="ltr">[Contributter] <%= @random_user.screen_name %> さんの <%= @contribution.target_date.strftime('%Y/%m/%d') %> の Contribution 数は <%= @contribution.count %> でした。</p>&mdash; <%= @random_user.screen_name %> (@<%= @random_user.screen_name %>) <a href="<%= @contribution.tweet_url %>?ref_src=twsrc%5Etfw"><%= @contribution.target_date.strftime('%Y/%m/%d') %></a>
           </blockquote>
           <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         </div>
