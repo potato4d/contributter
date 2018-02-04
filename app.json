@@ -63,7 +63,16 @@
     "TWITTER_CS": {
       "required": true
     },
-    "TZ": "Asia/Tokyo"
+    "TZ": "Asia/Tokyo",
+    "HEROKU_ENV": {
+      "required": true
+    },
+    "HEROKU_BASIC_USER": {
+      "required": true
+    },
+    "HEROKU_BASIC_PASS": {
+      "required": true
+    }
   },
   "formation": {
     "web": {
