@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     if user.github_id
       redirect_to ENV['ROOT_DOMAIN'] + ''
     else
-      redirect_to ENV['ROOT_DOMAIN'] + '/settings'
+      redirect_to ENV['ROOT_DOMAIN'] + '/dashboard/settings'
     end
   end
 end
