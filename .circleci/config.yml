@@ -1,0 +1,18 @@
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node
+    steps:
+      - checkout
+      - run: ssh -o StrictHostKeyChecking=no $HOST $CMD
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              only:
+                - master
