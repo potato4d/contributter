@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     user = User.create_auth_user(request.env['omniauth.auth'])
     session[:user_id] = user.id
     if user.github_id
-      redirect_to ENV['ROOT_DOMAIN'] + ''
+      redirect_to ENV['ROOT_DOMAIN'] + '/dashboard/'
     else
       redirect_to ENV['ROOT_DOMAIN'] + '/dashboard/settings'
     end
