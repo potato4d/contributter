@@ -1,4 +1,4 @@
-FROM ruby:alpine
+FROM ruby:2.4.0-alpine
 
 ENV LANG ja_JP.UTF-8
 
@@ -21,6 +21,7 @@ RUN apk update && \
       ruby-dev \
       yaml-dev \
       nodejs \
+      openssl-dev \
       zlib-dev && \
     apk add --update --no-cache \
       bash \
@@ -33,6 +34,7 @@ RUN apk update && \
       yaml
 
 COPY . .
+RUN gem install nokogiri -v '1.8.1'
 RUN bundle install
 
 RUN npm i -g yarn
