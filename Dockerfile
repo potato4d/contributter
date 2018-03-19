@@ -34,7 +34,6 @@ RUN apk update && \
       yaml
 
 COPY . .
-RUN gem install nokogiri -v '1.8.1'
 RUN bundle install
 
 RUN npm i -g yarn
