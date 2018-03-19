@@ -35,7 +35,7 @@ class AdminController < ApplicationController
       # TODO: Modulize
       body = {
         text: "<@" + ENV['OWNER_NAME'] + ">\n" + "[Contributter] " + Date.today.strftime("%Y/%m/%d") + "のバッチ実行結果\n\n",
-        channel: ENV['SLACK_CHANNEL']
+        channel: ENV['SLACK_CHANNEL'],
         attachments: [
           {
             color: '#F3E2C8',
