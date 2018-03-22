@@ -34,6 +34,7 @@ RUN apk update && \
       yaml
 
 COPY . .
+run gem install mysql2
 RUN bundle install
 
 RUN npm i -g yarn
