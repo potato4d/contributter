@@ -7,6 +7,6 @@ class Tweet
       config.access_token_secret = token_secret
     end
 
-    client.update("[b] " + user_id + "さんの" + date + "のContribution数は " + count + "でした。\n#contributter")
+    client.update("[Contributter] " + user_id + "さんの" + date + "のContribution数は " + count + "でした。\n#contributter")
   end
 end
