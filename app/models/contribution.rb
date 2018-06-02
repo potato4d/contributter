@@ -12,7 +12,7 @@ class Contribution < ApplicationRecord
       # Create DataModel
       contribution = Contribution.new
       contribution.user_id = user.id
-      contribution.count = count
+      contribution.count = data[:count]
       contribution.target_date = data[:date]
       contribution.tweet_url = 'https://twitter.com/' + user.screen_name + '/status/' + tweet.id.to_s
       contribution.save
