@@ -1,18 +1,7 @@
-# version: 2
-# jobs:
-#   deploy:
-#     docker:
-#       - image: circleci/node
-#     steps:
-#       - checkout
-#       - run: ssh -o StrictHostKeyChecking=no $HOST $CMD >&/dev/null
-
-# workflows:
-#   version: 2
-#   deploy:
-#     jobs:
-#       - deploy:
-#           filters:
-#             branches:
-#               only:
-#                 - master
+version: 2
+jobs:
+  test:
+    docker:
+      - image: circleci/ruby
+    steps:
+      - run: echo 1
