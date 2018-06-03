@@ -23,7 +23,7 @@ class AdminController < ApplicationController
           skip_count += 1
           next
         end
-
+        sleep(0.25)
         threads << Thread.new do
           ActiveRecord::Base.connection_pool.with_connection do
             c = Contribution.crawl_and_save(user)
