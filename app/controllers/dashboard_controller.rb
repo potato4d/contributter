@@ -23,7 +23,7 @@ class DashboardController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    redirect_to 'https://contributter.potato4d.me/'
+    redirect_to ENV['ROOT_DOMAIN']
   end
 
   private
@@ -36,6 +36,6 @@ class DashboardController < ApplicationController
   end
 
   def auth_guard
-    redirect_to 'https://contributter.potato4d.me/auth/twitter' unless current_user
+    redirect_to ENV['ROOT_DOMAIN'] + '/auth/twitter' unless current_user
   end
 end

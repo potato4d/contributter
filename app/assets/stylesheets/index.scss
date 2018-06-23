@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f2fffc;
+  background: radial-gradient(hsla(112, 45%, 70%, 1), hsla(112, 45%, 62%, 1));
 
   .main {
     min-width: 100vw;
@@ -12,16 +12,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .github-link {
-    font-size: 14px;
-    display: block;
-    text-align: center;
-    color: #333;
-    margin-top: 1rem;
-    letter-spacing: 0;
-    text-decoration: underline;
   }
 
   img {
@@ -44,9 +34,37 @@
   }
 
   .subtitle {
-    color: #024617;
+    color: #fff;
     letter-spacing: 0.2px;
     font-weight: 200;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+  }
+
+  .message {
+    background: transparent;
+    line-height: 2.0;
+    .message-body {
+      color: #fff;
+      text-shadow: 0 1px 1px rgba(0,0,0,0.4);
+    }
+  }
+
+  .button.is-primary.is-large {
+    color: #fff;
+    // border: solid 1px transparent;
+    border: solid 1px #fff;
+    // border-bottom: solid 4px #0FBFF5;
+    padding: 20px 16px;
+    background: rgba(255, 255, 255, 0.0);
+    // background: #0FC8FF;
+    border-radius: 4px;
+    // border-radius: 0;
+    font-size: 16px;
+    transition: background 0.15s ease-out;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
   }
 
   @media (min-width: 768px) {
