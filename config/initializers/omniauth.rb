@@ -1,7 +1,7 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
 
   configure do |config|
-    config.full_host = 'https://contributter.potato4d.me'
+    config.full_host = ENV['ROOT_DOMAIN']
   end
 
   provider :twitter,

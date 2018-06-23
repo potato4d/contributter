@@ -1,5 +1,6 @@
 FROM ruby:2.4.0-alpine
 
+ENV TZ Asia/Tokyo
 ENV LANG ja_JP.UTF-8
 
 RUN mkdir -p /usr/src/app
@@ -37,7 +38,6 @@ COPY . .
 RUN bundle install
 
 RUN npm i -g yarn
-RUN rails assets:precompile RAILS_ENV=production
 
 EXPOSE 3000
 CMD rails s -p 3000 -b '0.0.0.0'

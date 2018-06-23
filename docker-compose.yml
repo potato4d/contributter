@@ -1,0 +1,25 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+  rails:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - RAILS_ENV=development
+      - TWITTER_CK=${TWITTER_CK}
+      - TWITTER_CS=${TWITTER_CS}
+      - ROOT_DOMAIN=${ROOT_DOMAIN}
+      - SECURITY_SALT=ea703e7aa1efda0064eaa507d9e8ab7e
+      - ADMIN_TOKEN=1
+      - TZ=${TZ}
+    depends_on:
+      - db
