@@ -6,6 +6,13 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+if ENV['SENTRY_DSN']
+  Raven.configure do |config|
+    config.environments = %w[test production]
+    config.dsn = ENV['SENTRY_DSN']
+  end
+end
+
 module Contributter
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
