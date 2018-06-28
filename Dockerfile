@@ -35,7 +35,8 @@ RUN apk update && \
       yaml
 
 COPY . .
-RUN bundle install
+RUN bundle config path vendor/bundle
+RUN bundle install -j4
 
 RUN npm i -g yarn
 

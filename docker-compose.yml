@@ -7,6 +7,8 @@ services:
     environment:
       - MYSQL_ROOT_PASSWORD=password
   rails:
+    tty: true
+    stdin_open: true
     build: .
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     ports:
