@@ -3,7 +3,7 @@
 </p>
 
 
-Let's tweet your contributions.  
+Let's tweet your contributions.
 Original: [https://contributter.potato4d.me](https://contributter.potato4d.me)
 
 ## Features
@@ -13,7 +13,7 @@ Original: [https://contributter.potato4d.me](https://contributter.potato4d.me)
 
 ## Requirements
 
-- Ruby 2.3+
+- Ruby 2.4+
 - node 8.9.0+ with NPM(v5) and Yarn
 
 ## ENV values
