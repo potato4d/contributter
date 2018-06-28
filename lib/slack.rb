@@ -1,5 +1,5 @@
 class Slack
-  def self.post(success_count, fail_count, skip_count, total_count)
+  def self.post(counts)
     body = {
       text: "<@" + ENV['OWNER_NAME'] + ">\n" + "[Contributter] " + Date.today.strftime("%Y/%m/%d") + "のバッチ実行結果\n\n",
       channel: ENV['SLACK_CHANNEL'],
@@ -10,22 +10,22 @@ class Slack
           fields: [
             {
               title: '成功数',
-              value: success_count.to_s,
+              value: counts[:success].to_s,
               short: true
             },
             {
               title: '失敗数',
-              value: fail_count.to_s,
+              value: counts[:fail].to_s,
               short: true
             },
             {
               title: 'スキップ数',
-              value: skip_count.to_s,
+              value: counts[:skip].to_s,
               short: true
             },
             {
               title: '合計ユーザー数',
-              value: total_count.to_s,
+              value: counts[:total].to_s,
               short: true
             }
           ]

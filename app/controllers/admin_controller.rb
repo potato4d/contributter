@@ -11,30 +11,36 @@ class AdminController < ApplicationController
     begin
       users = User.all
 
-      total_count = users.length
-      success_count = 0
-      fail_count = 0
-      skip_count = 0
+      counts = {
+        total: users.length,
+        success: 0,
+        fail: 0,
+        skip: 0
+      }
 
-      threads = []
+      contributions = []
 
       users.each do |user|
         unless user.github_id
-          skip_count += 1
+          counts[:skip] += 1
           next
         end
-        sleep(0.25)
-        threads << Thread.new do
-          ActiveRecord::Base.connection_pool.with_connection do
-            c = Contribution.crawl_and_save(user)
-            c ? success_count += 1 : fail_count += 1
+        begin
+          c = Contribution.crawl_and_save(user)
+          if c
+            contributions << c
+            counts[:success] += 1
+          else
+            counts[:skip] += 1
           end
+        rescue => e
+          counts[:fail] += 1
         end
       end
 
-      threads.each { |t| t.join }
+      Contribution.import contributions
 
-      Slack::post(success_count, fail_count, skip_count, total_count)
+      Slack::post(counts)
       render json: {
         result: true
       }
