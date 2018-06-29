@@ -18,8 +18,6 @@ class AdminController < ApplicationController
         skip: 0
       }
 
-      contributions = []
-
       users.each do |user|
         unless user.github_id
           counts[:skip] += 1
@@ -28,7 +26,6 @@ class AdminController < ApplicationController
         begin
           c = Contribution.crawl_and_save(user)
           if c
-            contributions << c
             counts[:success] += 1
           else
             counts[:skip] += 1
@@ -37,8 +34,6 @@ class AdminController < ApplicationController
           counts[:fail] += 1
         end
       end
-
-      Contribution.import contributions
 
       Slack::post(counts)
       render json: {

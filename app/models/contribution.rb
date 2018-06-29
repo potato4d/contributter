@@ -17,7 +17,7 @@ class Contribution < ApplicationRecord
       contribution.count = data[:count]
       contribution.target_date = data[:date]
       contribution.tweet_url = 'https://twitter.com/' + user.screen_name + '/status/' + tweet.id.to_s
-      contribution
+      contribution.save
     rescue => e
       raise 'crawl or tweet error.'
     end
