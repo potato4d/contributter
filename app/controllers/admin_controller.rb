@@ -8,42 +8,20 @@ class AdminController < ApplicationController
 
   # Daily batch
   def crawl_and_tweet
-    begin
-      users = User.all
+    users = User.all
 
-      counts = {
-        total: users.length,
-        success: 0,
-        fail: 0,
-        skip: 0
-      }
+    count = 0
 
-      users.each do |user|
-        unless user.github_id
-          counts[:skip] += 1
-          next
-        end
-        begin
-          c = Contribution.crawl_and_save(user)
-          if c
-            counts[:success] += 1
-          else
-            counts[:skip] += 1
-          end
-        rescue => e
-          counts[:fail] += 1
-        end
-      end
-
-      Slack::post(counts)
-      render json: {
-        result: true
-      }
-    rescue => e
-      render json: {
-        result: e
-      }
+    users.each do |user|
+      next unless user.github_id
+      RegisterWorker.perform_async(user.id)
+      count += 1
     end
+
+    render json: {
+      result: true,
+      register_count: count
+    }
   end
 
   private

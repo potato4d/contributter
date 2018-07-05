@@ -58,6 +58,7 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.2)
     crass (1.0.4)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
@@ -101,6 +102,7 @@ GEM
     minitest (5.11.3)
     multi_json (1.13.1)
     multipart-post (2.0.0)
+    mustermann (1.0.2)
     mysql2 (0.4.10)
     naught (1.1.0)
     nio4r (2.3.1)
@@ -123,6 +125,8 @@ GEM
     public_suffix (3.0.2)
     puma (3.11.4)
     rack (2.0.5)
+    rack-protection (2.0.3)
+      rack
     rack-test (1.0.0)
       rack (>= 1.0, < 3)
     rails (5.1.6)
@@ -152,6 +156,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    redis (4.0.1)
     ruby_dep (1.5.0)
     rubyzip (1.2.1)
     sass (3.5.6)
@@ -170,7 +175,17 @@ GEM
       rubyzip (~> 1.2)
     sentry-raven (2.7.4)
       faraday (>= 0.7.6, < 1.0)
+    sidekiq (5.1.3)
+      concurrent-ruby (~> 1.0)
+      connection_pool (~> 2.2, >= 2.2.0)
+      rack-protection (>= 1.5.0)
+      redis (>= 3.3.5, < 5)
     simple_oauth (0.3.1)
+    sinatra (2.0.3)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.3)
+      tilt (~> 2.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -236,9 +251,12 @@ DEPENDENCIES
   pry
   puma (~> 3.7)
   rails (~> 5.1.4)
+  redis
   sass-rails (~> 5.0)
   selenium-webdriver
   sentry-raven
+  sidekiq
+  sinatra
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

@@ -6,6 +6,10 @@ services:
       - "3306:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=password
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
   rails:
     tty: true
     stdin_open: true
@@ -25,3 +29,20 @@ services:
       - TZ=${TZ}
     depends_on:
       - db
+      - redis
+  sidekiq:
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - .:/usr/src/app
+    environment:
+      - RAILS_ENV=development
+      - TWITTER_CK=${TWITTER_CK}
+      - TWITTER_CS=${TWITTER_CS}
+      - ROOT_DOMAIN=${ROOT_DOMAIN}
+      - SECURITY_SALT=ea703e7aa1efda0064eaa507d9e8ab7e
+      - ADMIN_TOKEN=1
+      - TZ=${TZ}
+    depends_on:
+      - db
+      - redis
