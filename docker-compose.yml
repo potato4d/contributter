@@ -17,7 +17,15 @@ services:
       - "3035:3035"
     volumes:
       - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/vendor
+      - /usr/src/app/log
+      - /usr/src/app/.git
+      - /usr/src/app/app/controllers
+      - /usr/src/app/app/models
+      - /usr/src/app/app/views
     environment:
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
       - RAILS_ENV=development
       - TWITTER_CK=${TWITTER_CK}
       - TWITTER_CS=${TWITTER_CS}
@@ -37,7 +45,12 @@ services:
       - "3000:3000"
     volumes:
       - .:/usr/src/app
+      - /usr/src/app/node_modules
+      - /usr/src/app/vendor
+      - /usr/src/app/log
+      - /usr/src/app/.git
     environment:
+      - WEBPACKER_DEV_SERVER_HOST=webpacker
       - RAILS_ENV=development
       - TWITTER_CK=${TWITTER_CK}
       - TWITTER_CS=${TWITTER_CS}
@@ -48,19 +61,22 @@ services:
     depends_on:
       - db
       - redis
-  sidekiq:
-    build: .
-    command: bundle exec sidekiq
-    volumes:
-      - .:/usr/src/app
-    environment:
-      - RAILS_ENV=development
-      - TWITTER_CK=${TWITTER_CK}
-      - TWITTER_CS=${TWITTER_CS}
-      - ROOT_DOMAIN=${ROOT_DOMAIN}
-      - SECURITY_SALT=ea703e7aa1efda0064eaa507d9e8ab7e
-      - ADMIN_TOKEN=1
-      - TZ=${TZ}
-    depends_on:
-      - db
-      - redis
+  # sidekiq:
+  #   build: .
+  #   command: bundle exec sidekiq
+  #   volumes:
+  #     - .:/usr/src/app
+  #     - /usr/src/app/vendor
+  #     - /usr/src/app/log
+  #     - /usr/src/app/.git
+  #   environment:
+  #     - RAILS_ENV=development
+  #     - TWITTER_CK=${TWITTER_CK}
+  #     - TWITTER_CS=${TWITTER_CS}
+  #     - ROOT_DOMAIN=${ROOT_DOMAIN}
+  #     - SECURITY_SALT=ea703e7aa1efda0064eaa507d9e8ab7e
+  #     - ADMIN_TOKEN=1
+  #     - TZ=${TZ}
+  #   depends_on:
+  #     - db
+  #     - redis

@@ -8,7 +8,7 @@
 // layout file, like app/views/layouts/application.html.erb
 
 // stylesheets
-import './stylesheets/application.scss'
+import '../stylesheets/application.scss'
 
 // images
 import './images/logo.svg'

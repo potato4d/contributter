@@ -2,6 +2,7 @@ html, body {
   background: #fcfcff;
   min-width: 100vw;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
   font-family: -apple-system, Hiragino Sans, YuGothic, Meiryo;
 }
 
@@ -12,6 +13,25 @@ a {
 a:hover,
 a.navbar-item.is-active, a.navbar-item:hover, a.navbar-link.is-active, a.navbar-link:hover {
   color: #196127;
+}
+
+.navbar-link {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.navbar * {
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-family: 'Jaldi', -apple-system, Hiragino Sans, YuGothic, Meiryo;
+}
+
+.is-3 .card {
+  font-family: 'Jaldi', -apple-system, Hiragino Sans, YuGothic, Meiryo;
+}
+
+.is-9 .title {
+  font-family: 'Jaldi', -apple-system, Hiragino Sans, YuGothic, Meiryo;
 }
 
 .navbar-item.is-active {
@@ -97,6 +117,7 @@ a.navbar-item.is-active, a.navbar-item:hover, a.navbar-link.is-active, a.navbar-
     // border-radius: 0;
     font-size: 16px;
     transition: background 0.15s ease-out;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 
     &:hover {
       background: rgba(255, 255, 255, 0.15);
@@ -125,9 +146,31 @@ a.navbar-item.is-active, a.navbar-item:hover, a.navbar-link.is-active, a.navbar-
 }
 
 #dashboard {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  > .section {
+    flex: 1;
+    box-shadow: 0 1px 3px rgba(0,100,0,0.1) inset;
+  }
+
   .adsbygoogle {
     margin: 16px auto;
     box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  }
+
+  .card-content .media.has-text-centered {
+    height: 40px;
+    margin-bottom: 0;
+    .media-content, .title {
+      height: 100%;
+      overflow: hidden;
+      display: block;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   .profile-icon-area {
