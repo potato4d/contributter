@@ -9,13 +9,13 @@ class User < ApplicationRecord
     icon_url = provider_data[:info][:image].gsub(/http:\/\//, 'https://')
     access_token = provider_data[:credentials][:token]
     access_secret = provider_data[:credentials][:secret]
-
-    User.find_or_create_by(uid: uid) do |user|
-      user.screen_name = screen_name
-      user.icon_url = icon_url
-      user.access_token = self.encryptor.encrypt_and_sign(access_token)
-      user.access_secret = self.encryptor.encrypt_and_sign(access_secret)
-    end
+    user = User.find_or_create_by(uid: uid)
+    user.screen_name = screen_name
+    user.icon_url = icon_url
+    user.access_token = self.encryptor.encrypt_and_sign(access_token)
+    user.access_secret = self.encryptor.encrypt_and_sign(access_secret)
+    user.save!
+    user
   end
 
   def decrypted_token
