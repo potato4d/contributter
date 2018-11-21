@@ -14,7 +14,7 @@
           <span class="font-bold">{{ userName }}</span
           ><br />
           <span class="text-sm mt-2 inline-block leading-normal"
-            >{{ tweetDate }} の<br />Contribution 数は
+            >{{ tweetDate }} の<br v-if="isBr" />Contribution 数は
             {{ contributionCount }} でした。</span
           >
         </div>
@@ -31,7 +31,11 @@ export default Vue.extend({
     photoURL: String,
     tweetURL: String,
     tweetDate: String,
-    contributionCount: String
+    contributionCount: Number,
+    isBr: {
+      default: true,
+      type: Boolean
+    }
   }
 })
 </script>
