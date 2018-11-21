@@ -1,0 +1,40 @@
+{
+  "name": "contributter",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "test": "jest",
+    "format": "prettier './{src,tests}/**/*.{js,ts,vue}' --write"
+  },
+  "dependencies": {
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1",
+    "vue-router-layout": "^0.1.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^23.1.4",
+    "@vue/cli-plugin-babel": "^3.1.1",
+    "@vue/cli-plugin-typescript": "^3.1.1",
+    "@vue/cli-service": "^3.1.4",
+    "@vue/test-utils": "^1.0.0-beta.20",
+    "babel-core": "7.0.0-bridge.0",
+    "jest": "^23.6.0",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-transform-stub": "^1.0.0",
+    "node-sass": "^4.9.0",
+    "prettier": "^1.15.2",
+    "sass-loader": "^7.0.1",
+    "ts-jest": "^23.0.0",
+    "typescript": "^3.0.0",
+    "vue-auto-routing": "^0.3.0",
+    "vue-cli-plugin-auto-routing": "^0.2.1",
+    "vue-jest": "^3.0.0",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  }
+}
