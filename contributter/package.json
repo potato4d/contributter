@@ -9,6 +9,7 @@
     "format": "prettier './{src,tests}/**/*.{js,ts,vue}' --write"
   },
   "dependencies": {
+    "firebase": "^5.5.9",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
     "vue-router-layout": "^0.1.2"
