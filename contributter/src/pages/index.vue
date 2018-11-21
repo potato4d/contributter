@@ -11,6 +11,7 @@
         type="button"
         class="border-white border-solid border px-4 py-3 rounded text-white hover:bg-green-light"
         style="transition: all 0.2s ease-out;"
+        @click="register"
       >
         計測をはじめる
       </button>
@@ -51,6 +52,12 @@ export default {
         tweetDate: '2018/11/20',
         contributionCount: 10
       }
+    }
+  },
+  methods: {
+    register() {
+      const provider = new this.$firebase.auth.TwitterAuthProvider()
+      this.$app.auth().signInWithRedirect(provider)
     }
   }
 }
