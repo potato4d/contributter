@@ -33,11 +33,14 @@
 
 <script>
 // ~ is an alias to /src
+import TheLogo from '~/components/TheLogo.vue'
 import TweetCard from '~/components/TweetCard.vue'
+
 export default {
   name: 'home',
   components: {
-    TweetCard
+    TweetCard,
+    TheLogo
   },
   computed: {
     user() {

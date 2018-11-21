@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 class="text-xl2 text-center">Contributter</h1>
+    <TheLogo />
     <div class="text-center mt-4">
       <img
         :src="user.photoURL"
@@ -76,6 +76,7 @@
 
 <script>
 // ~ is an alias to /src
+import TheLogo from '~/components/TheLogo.vue'
 import TweetCard from '~/components/TweetCard.vue'
 
 const NG_NAMES = ['about', 'policy', 'tos', 'settings']
@@ -83,7 +84,8 @@ const NG_NAMES = ['about', 'policy', 'tos', 'settings']
 export default {
   name: 'home',
   components: {
-    TweetCard
+    TweetCard,
+    TheLogo
   },
   beforeRouteEnter(to, from, next) {
     if (!to.path.startsWith('/@')) {
