@@ -48,15 +48,6 @@
     "SECURITY_SALT": {
       "required": true
     },
-    "SLACK_API_ENDPOINT": {
-      "required": true
-    },
-    "SLACK_API_ROOT": {
-      "required": true
-    },
-    "SLACK_CHANNEL": {
-      "required": true
-    },
     "TWITTER_CK": {
       "required": true
     },
