@@ -1,0 +1,26 @@
+{
+  "name": "contributter-batch",
+  "version": "0.1.0",
+  "bin": {
+    "batch": "bin/batch.js"
+  },
+  "scripts": {
+    "start": "ts-node ./src/index.ts",
+    "build": "tsc",
+    "watch": "tsc -w",
+    "cdk:run": "cdk",
+    "format": "prettier './**/*.{js,ts}' --write"
+  },
+  "devDependencies": {
+    "@types/node": "^8.9.4",
+    "aws-cdk": "^0.20.0",
+    "prettier": "^1.15.3",
+    "typescript": "^3.1.2"
+  },
+  "dependencies": {
+    "@aws-cdk/cdk": "^0.20.0",
+    "mysql": "^2.16.0",
+    "ts-node": "^7.0.1",
+    "typeorm": "^0.2.9"
+  }
+}

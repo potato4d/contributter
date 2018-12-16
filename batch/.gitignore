@@ -1,0 +1,3 @@
+{bin,lib,src}/*.js
+*.d.ts
+node_modules
