@@ -1,3 +1,5 @@
-{bin,lib,src}/*.js
+bin/**/*.js
+lib/**/*.js
+src/**/*.js
 *.d.ts
 node_modules
