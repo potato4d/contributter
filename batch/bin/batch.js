@@ -1,9 +1,0 @@
-#!/usr/bin/env node
-'use strict'
-Object.defineProperty(exports, '__esModule', { value: true })
-const cdk = require('@aws-cdk/cdk')
-const batch_stack_1 = require('../lib/batch-stack')
-const app = new cdk.App()
-new batch_stack_1.BatchStack(app, 'BatchStack')
-app.run()
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYmF0Y2guanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJiYXRjaC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7QUFDQSxvQ0FBcUM7QUFDckMsb0RBQWdEO0FBRWhELE1BQU0sR0FBRyxHQUFHLElBQUksR0FBRyxDQUFDLEdBQUcsRUFBRSxDQUFDO0FBQzFCLElBQUksd0JBQVUsQ0FBQyxHQUFHLEVBQUUsWUFBWSxDQUFDLENBQUM7QUFDbEMsR0FBRyxDQUFDLEdBQUcsRUFBRSxDQUFDIiwic291cmNlc0NvbnRlbnQiOlsiIyEvdXNyL2Jpbi9lbnYgbm9kZVxuaW1wb3J0IGNkayA9IHJlcXVpcmUoJ0Bhd3MtY2RrL2NkaycpO1xuaW1wb3J0IHsgQmF0Y2hTdGFjayB9IGZyb20gJy4uL2xpYi9iYXRjaC1zdGFjayc7XG5cbmNvbnN0IGFwcCA9IG5ldyBjZGsuQXBwKCk7XG5uZXcgQmF0Y2hTdGFjayhhcHAsICdCYXRjaFN0YWNrJyk7XG5hcHAucnVuKCk7XG4iXX0=
