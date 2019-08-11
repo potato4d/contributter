@@ -3,20 +3,69 @@ import '../styles/bundle.css'
 import { AppWrapper } from '../components/partials/AppWrapper';
 import { AppHeader } from '../components/partials/AppHeader';
 import { OAuthButton } from '../components/partials/index/OAuthButton';
+import app from '../externals/firebaseApp';
+import { IndexLoadingContentLoader } from '../components/partials/index/IndexLoadingContent';
+import { IndexUserContent } from '../components/partials/index/IndexUserContent';
+import { IndexGuestContent } from '../components/partials/index/IndexGuestContent';
 
-const Index: React.FC = () => (
-  <AppWrapper>
-    <AppHeader />
-    <div>
-      <div className="w-1/2 mx-auto">
-        <p className="text-shadow text-center text-sm py-4">
-          Contributter は毎日 0 時にあなたが前日 GitHub 上で行った貢献の数を呟いてくれる Web App です。<br />
-          Twitter OAuth で連携し、GitHub ID を入力するだけで、計測を開始できます。
-            </p>
-      </div>
-    </div>
-    <OAuthButton />
-  </AppWrapper>
-)
+interface Props {
+}
 
-export default Index
+interface State {
+  user?: object
+  isLoaded: boolean
+}
+
+class IndexPage extends React.Component<Props,State> {
+  constructor(props, state) {
+    super(props, state)
+    this.state = {
+      user: null,
+      isLoaded: false
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => {
+      const user = app.auth().currentUser
+      if (user) {
+        this.setState({
+          user: user || null,
+          isLoaded: true
+        })
+      }
+    }, 0)
+    setTimeout(() => {
+      const user = app.auth().currentUser
+      this.setState({
+        user: user || null,
+        isLoaded: true
+      })
+    }, 3000)
+    app.auth().onAuthStateChanged((u) => {
+      this.setState({
+        user: u.toJSON(),
+        isLoaded: true
+      })
+    })
+  }
+
+  render() {
+    return (
+      <AppWrapper>
+        <AppHeader />
+        {
+          !this.state.isLoaded ?
+            <IndexLoadingContentLoader />
+            : (
+              this.state.user ?
+                <IndexUserContent isActive={true} /> :
+                <IndexGuestContent />
+            )
+        }
+      </AppWrapper>
+    )
+  }
+}
+
+export default IndexPage
