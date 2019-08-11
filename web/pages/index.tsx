@@ -1,22 +1,21 @@
 import * as React from 'react'
 import '../styles/bundle.css'
-import { AppWrapper } from '../components/partials/AppWrapper';
-import { AppHeader } from '../components/partials/AppHeader';
-import { OAuthButton } from '../components/partials/index/OAuthButton';
-import app from '../externals/firebaseApp';
-import { IndexLoadingContentLoader } from '../components/partials/index/IndexLoadingContent';
-import { IndexUserContent } from '../components/partials/index/IndexUserContent';
-import { IndexGuestContent } from '../components/partials/index/IndexGuestContent';
+import { AppWrapper } from '../components/partials/AppWrapper'
+import { AppHeader } from '../components/partials/AppHeader'
+import { OAuthButton } from '../components/partials/index/OAuthButton'
+import app from '../externals/firebaseApp'
+import { IndexLoadingContentLoader } from '../components/partials/index/IndexLoadingContent'
+import { IndexUserContent } from '../components/partials/index/IndexUserContent'
+import { IndexGuestContent } from '../components/partials/index/IndexGuestContent'
 
-interface Props {
-}
+interface Props {}
 
 interface State {
   user?: object
   isLoaded: boolean
 }
 
-class IndexPage extends React.Component<Props,State> {
+class IndexPage extends React.Component<Props, State> {
   constructor(props, state) {
     super(props, state)
     this.state = {
@@ -42,7 +41,7 @@ class IndexPage extends React.Component<Props,State> {
         isLoaded: true
       })
     }, 3000)
-    app.auth().onAuthStateChanged((u) => {
+    app.auth().onAuthStateChanged(u => {
       this.setState({
         user: u.toJSON(),
         isLoaded: true
@@ -54,15 +53,13 @@ class IndexPage extends React.Component<Props,State> {
     return (
       <AppWrapper>
         <AppHeader />
-        {
-          !this.state.isLoaded ?
-            <IndexLoadingContentLoader />
-            : (
-              this.state.user ?
-                <IndexUserContent isActive={true} /> :
-                <IndexGuestContent />
-            )
-        }
+        {!this.state.isLoaded ? (
+          <IndexLoadingContentLoader />
+        ) : this.state.user ? (
+          <IndexUserContent isActive={true} />
+        ) : (
+          <IndexGuestContent />
+        )}
       </AppWrapper>
     )
   }

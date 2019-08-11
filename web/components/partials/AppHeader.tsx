@@ -15,6 +15,6 @@ export const AppHeader: React.FC = () => (
       className="text-bold text-2xl"
     >
       Contributter
-        </h1>
+    </h1>
   </div>
 )
