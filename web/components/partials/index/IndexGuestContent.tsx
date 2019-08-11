@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { OAuthButton } from './OAuthButton'
+import { IndexGuestOAuthButton } from './GuestContent/IndexGuestOAuthButton'
 
 export const IndexGuestContent: React.FC = () => (
   <div>
@@ -11,6 +11,6 @@ export const IndexGuestContent: React.FC = () => (
         Twitter OAuth で連携し、GitHub ID を入力するだけで、計測を開始できます。
       </p>
     </div>
-    <OAuthButton />
+    <IndexGuestOAuthButton />
   </div>
 )

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
-import firebaseApp from '../../../externals/firebaseApp'
-import { AppButton } from '../../common/AppButton'
+import firebaseApp from '../../../../externals/firebaseApp'
+import { AppButton } from '../../../common/AppButton'
 
-export class OAuthButton extends React.Component {
+export class IndexGuestOAuthButton extends React.Component {
   constructor(props, state) {
     super(props, state)
     this.handleClickSignInWithTwitter = this.handleClickSignInWithTwitter.bind(
@@ -18,6 +18,9 @@ export class OAuthButton extends React.Component {
         firebaseApp
           .auth()
           .signInWithPopup(new firebase.auth.TwitterAuthProvider())
+          .then((result) => {
+            console.log(result)
+          })
       }
     } catch (e) {
       console.log(e)

@@ -16,9 +16,11 @@ const LinkStateView: React.FC<{ isActive: boolean }> = ({ isActive }) => (
       <div className="w-6 h-6">
         <AppGitHubIcon />
       </div>
-      <div className={`w-6 h-6 mx-3${isActive ? ' text-green-400' : ''}`}>
+      <div className="w-3 h-1"></div>
+      <div onClick={() => {alert(1)}} className={`w-6 h-6 cursor-pointer ${isActive ? 'text-green-400 hover:text-red-600' : 'hover:text-green-400'}`}>
         <AppLinkIcon />
       </div>
+      <div className="w-3 h-1"></div>
       <div className="w-6 h-6">
         <AppTwitterIcon />
       </div>

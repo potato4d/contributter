@@ -2,7 +2,7 @@ import * as React from 'react'
 import '../styles/bundle.css'
 import { AppWrapper } from '../components/partials/AppWrapper'
 import { AppHeader } from '../components/partials/AppHeader'
-import { OAuthButton } from '../components/partials/index/OAuthButton'
+import { IndexGuestOAuthButton } from '../components/partials/index/GuestContent/IndexGuestOAuthButton'
 import app from '../externals/firebaseApp'
 import { IndexLoadingContentLoader } from '../components/partials/index/IndexLoadingContent'
 import { IndexUserContent } from '../components/partials/index/IndexUserContent'
@@ -29,7 +29,7 @@ class IndexPage extends React.Component<Props, State> {
       const user = app.auth().currentUser
       if (user) {
         this.setState({
-          user: user || null,
+          user: user ? user.toJSON() : null,
           isLoaded: true
         })
       }
@@ -37,7 +37,7 @@ class IndexPage extends React.Component<Props, State> {
     setTimeout(() => {
       const user = app.auth().currentUser
       this.setState({
-        user: user || null,
+        user: user ? user.toJSON() : null,
         isLoaded: true
       })
     }, 3000)
