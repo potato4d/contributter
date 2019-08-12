@@ -14,6 +14,7 @@
     "@types/node": "^12.7.1",
     "@types/react": "^16.9.1",
     "@types/react-dom": "^16.8.5",
+    "@types/uuid": "^3.4.5",
     "@zeit/next-css": "^1.0.1",
     "autoprefixer": "^9.6.1",
     "cssnano": "^4.1.10",
@@ -21,7 +22,8 @@
     "next": "^9.0.3",
     "postcss-easy-import": "^3.0.0",
     "react-dom": "^16.9.0",
-    "tailwindcss": "^1.1.1"
+    "tailwindcss": "^1.1.1",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@types/styled-components": "^4.1.18",

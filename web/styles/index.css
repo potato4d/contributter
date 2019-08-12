@@ -34,3 +34,19 @@
     opacity: 0;
   }
 }
+
+.toast {
+  animation: slideIn 0.3s ease-out forwards,
+             slideOut 0.3s 3.3s ease-out forwards;
+  overflow: hidden;
+}
+
+@keyframes slideIn {
+  0% { opacity: 0.0; transform: translateY(-8px)}
+  100% { opacity: 1.0; transform: translateY(0px)}
+}
+
+@keyframes slideOut {
+  0% { opacity: 1.0; transform: translateY(0px)}
+  100% { opacity: 0.0; transform: translateY(-8px)}
+}

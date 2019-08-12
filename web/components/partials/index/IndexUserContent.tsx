@@ -7,6 +7,7 @@ import {
 import { IndexUserContentForm } from './UserContent/IndexUserContentForm'
 import { UserData } from '../../../types/firestore'
 import { updateUser } from '../../../externals/firebaseApp'
+import { ToasterEmitter } from '../../../externals/toastEmitter'
 
 interface Props {
   user?: UserData
@@ -36,6 +37,10 @@ export class IndexUserContent extends React.Component<Props, {}> {
         uid: this.props.user.uid,
         GitHubID,
         enabled: !!GitHubID
+      })
+      ToasterEmitter.dispatch({
+        type: 'info',
+        body: '更新しました'
       })
     } catch (e) {
       alert('更新に失敗しました。')
