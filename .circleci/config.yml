@@ -29,7 +29,7 @@ jobs:
           key: v1-dependencies-{{ checksum "yarn.lock" }}
       - run:
           name: Build
-          command: cd web; yarn; yarn build; yarn export
+          command: cd web; yarn; yarn build:tailwind; yarn build; yarn export
   build-functions:
     working_directory: ~/app
     docker:
