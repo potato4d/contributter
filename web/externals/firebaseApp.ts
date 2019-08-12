@@ -1,6 +1,7 @@
 import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
+import { UserData } from '../types/firestore'
 
 interface FirebaseConfig {
   apiKey: string
@@ -25,7 +26,39 @@ const config: FirebaseConfig = {
 const app = !firebase.apps.length
   ? firebase.initializeApp(config)
   : firebase.app()
+const firestore = app.firestore()
+
 export default app
 // export const Application = app
 // export const auth = firebase.auth()
 // export const firestore = firebase.firestore()
+
+export async function fetchUser(uid: string): Promise<UserData | null> {
+  let firestoreUserData: UserData
+  const userRef = firestore.collection('users').doc(uid)
+  try {
+    firestoreUserData = await userRef.get().then(doc => doc.data() as UserData)
+  } catch (e) {
+    return null
+  }
+  return firestoreUserData
+}
+
+export async function updateUser(
+  userData: Partial<UserData> & { uid: string }
+): Promise<boolean> {
+  const user = await fetchUser(userData.uid)
+  const userRef = firestore.collection('users').doc(userData.uid)
+  try {
+    console.log({
+      ...user,
+      ...userData
+    })
+    userRef.set({
+      ...user,
+      ...userData
+    })
+  } catch (e) {
+    return false
+  }
+}

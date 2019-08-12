@@ -5,16 +5,24 @@ import { UserData } from '../../../../types/firestore'
 
 interface Props {
   user: UserData
+  onSubmit: (GitHubID: string) => Promise<void>
 }
 
 export const IndexUserContentForm: React.FC<Props> = props => {
   const [GitHubID, setGitHubID] = React.useState(props.user.GitHubID)
   return (
-    <React.Fragment>
+    <form
+      onSubmit={() => {
+        props.onSubmit(GitHubID)
+      }}
+    >
       <div className="flex justify-center">
         <div className="relative">
           <input
             defaultValue={GitHubID}
+            onInput={event => {
+              setGitHubID(event.currentTarget.value)
+            }}
             type="text"
             placeholder="Your GitHub ID"
             className="w-32 pl-8 pr-1 h-6 text-xs appearance-none bg-transparent border text-gray-200 focus:bg-gray-800 rounded-sm border-gray-400"
@@ -47,10 +55,14 @@ export const IndexUserContentForm: React.FC<Props> = props => {
         </div>
       </div>
       <div className="pt-4 flex justify-center">
-        <AppButton onClick={() => {}}>
+        <AppButton
+          onClick={() => {
+            props.onSubmit(GitHubID)
+          }}
+        >
           <span>Update Configuration</span>
         </AppButton>
       </div>
-    </React.Fragment>
+    </form>
   )
 }
