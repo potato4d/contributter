@@ -3,7 +3,7 @@ jobs:
   lint:
     working_directory: ~/app
     docker:
-      - image: circleci/node:8.9.4
+      - image: circleci/node:8.13.0
     steps:
       - checkout
       - restore_cache:
@@ -15,7 +15,7 @@ jobs:
   build-frontend:
     working_directory: ~/app
     docker:
-      - image: circleci/node:8.9.4
+      - image: circleci/node:8.13.0
     steps:
       - checkout
       - restore_cache:
@@ -33,7 +33,7 @@ jobs:
   build-functions:
     working_directory: ~/app
     docker:
-      - image: circleci/node:8.9.4
+      - image: circleci/node:8.13.0
     steps:
       - checkout
       - restore_cache:
