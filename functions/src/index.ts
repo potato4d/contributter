@@ -14,6 +14,26 @@ import { crawl } from './utils/crawler'
 const environments = functions.config() as Environments
 const firestore = admin.firestore()
 
+export const dailyTweet = functions.pubsub
+  .schedule('1 0 * * *')
+  .timeZone('Asia/Tokyo')
+  .onRun(async context => {
+    const usersSnapshot = await firestore.collection('users').get()
+    const users: UserData[] = []
+    usersSnapshot.forEach(doc => {
+      users.push(doc.data() as UserData)
+    })
+    await Promise.all(
+      users.map(async u => {
+        const tr: TweetRequest = {
+          uid: u.uid
+        }
+        firestore.collection('tweetRequest').add(tr)
+      })
+    )
+    return
+  })
+
 export const tweet = functions.firestore
   .document('tweetRequest/{tweetRequestId}')
   .onCreate(async snapshot => {
