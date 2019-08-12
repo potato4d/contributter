@@ -3,7 +3,6 @@ import * as admin from 'firebase-admin'
 import { execTweet } from './utils/tweet'
 import { Environments, TweetRequest, UserData } from './types'
 import { crawl } from './utils/crawler'
-
 ;(admin as any).initializeApp({
   //   apiKey: process.env.FIREBASE_APIKEY,
   //   authDomain: process.env.FIREBASE_AUTHDOMAIN,

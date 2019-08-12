@@ -47,14 +47,18 @@ export async function fetchUser(uid: string): Promise<UserData | null> {
 export async function updateUser(
   userData: Partial<UserData> & { uid: string }
 ): Promise<boolean> {
-  const user = await fetchUser(userData.uid)
+  let user: UserData
+  try {
+    user = await fetchUser(userData.uid)
+  } catch (e) {}
   const userRef = firestore.collection('users').doc(userData.uid)
   try {
     userRef.set({
-      ...user,
+      ...(user || {}),
       ...userData
     })
   } catch (e) {
+    console.log(e)
     return false
   }
 }

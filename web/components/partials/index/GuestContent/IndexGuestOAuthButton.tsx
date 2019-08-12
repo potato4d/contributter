@@ -36,15 +36,19 @@ export class IndexGuestOAuthButton extends React.Component {
           iconURL: (result.additionalUserInfo
             .profile as any).profile_image_url.replace('_normal', '_400x400')
         }
-        const firestoreUserData: UserData = await fetchUser(result.user.uid)
-        await updateUser({
-          ...(firestoreUserData || {}),
+        const firestoreUserData: UserData = await fetchUser(userData.uid)
+        const payload: UserData = {
+          ...(firestoreUserData || {
+            uid: userData.uid
+          }),
           ...userData,
           ...{
             GitHubID: (firestoreUserData || ({} as any)).GitHubID! || '',
-            enabled: (firestoreUserData || ({} as any)).enabled
+            enabled: !!(firestoreUserData || ({} as any)).enabled
           }
-        })
+        }
+        console.log(payload)
+        await updateUser(payload)
       }
     } catch (e) {
       ToasterEmitter.dispatch({
