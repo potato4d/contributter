@@ -26,6 +26,12 @@ export class IndexUserContent extends React.Component<Props, {}> {
         uid: this.props.user.uid,
         enabled: !this.props.user.enabled
       })
+      ToasterEmitter.dispatch({
+        type: 'info',
+        body: `ツイートを${
+          !this.props.user.enabled ? '有効' : '無効'
+        }化しました`
+      })
     } catch (e) {
       alert('更新に失敗しました。')
     }
@@ -40,7 +46,7 @@ export class IndexUserContent extends React.Component<Props, {}> {
       })
       ToasterEmitter.dispatch({
         type: 'info',
-        body: '更新しました'
+        body: '連携 ID を更新しました'
       })
     } catch (e) {
       alert('更新に失敗しました。')

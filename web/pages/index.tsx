@@ -8,6 +8,7 @@ import { IndexLoadingContentLoader } from '../components/partials/index/IndexLoa
 import { IndexUserContent } from '../components/partials/index/IndexUserContent'
 import { IndexGuestContent } from '../components/partials/index/IndexGuestContent'
 import { UserData } from '../types/firestore'
+import { ToasterEmitter } from '../externals/toastEmitter'
 
 interface Props {}
 
@@ -50,7 +51,6 @@ class IndexPage extends React.Component<Props, State> {
     const userRef = firestore.collection('users').doc(this.state.user!.uid)
     userRef.onSnapshot(snapshot => {
       const user: UserData = snapshot.data() as UserData
-      console.log(user.enabled)
       this.setState({
         user
       })
@@ -63,7 +63,6 @@ class IndexPage extends React.Component<Props, State> {
         user: null,
         isLoaded: true
       })
-      this.subscribeUser()
       return
     }
     const user = await fetchUser(firebaseUser.uid)
@@ -73,13 +72,13 @@ class IndexPage extends React.Component<Props, State> {
         user,
         isLoaded: true
       })
+      this.subscribeUser()
     } else {
       this.setState({
         user: null,
         isLoaded: true
       })
     }
-    this.subscribeUser()
   }
 
   render() {

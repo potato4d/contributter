@@ -2,6 +2,7 @@ import { v4 as uuid } from 'uuid'
 
 export interface ToastData {
   id: string
+  life?: number
   type: 'info' | 'error'
   body: string
 }
@@ -17,6 +18,7 @@ class Emitter {
     this.subscribers.forEach(event => {
       event({
         id: uuid(),
+        life: ~~(new Date().getTime() * 0.001) + 4,
         ...payload
       })
     })
