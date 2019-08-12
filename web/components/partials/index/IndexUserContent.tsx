@@ -7,7 +7,7 @@ import {
 import { IndexUserContentForm } from './UserContent/IndexUserContentForm'
 import { UserData } from '../../../types/firestore'
 import { updateUser } from '../../../externals/firebaseApp'
-import { ToasterEmitter } from '../../../externals/toastEmitter'
+import { ToasterEmitter } from '../../../externals/toasterEmitter'
 
 interface Props {
   user?: UserData

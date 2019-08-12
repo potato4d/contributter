@@ -7,7 +7,7 @@ import firebaseApp, {
 } from '../../../../externals/firebaseApp'
 import { AppButton } from '../../../common/AppButton'
 import { UserData } from '../../../../types/firestore'
-import { ToasterEmitter } from '../../../../externals/toastEmitter'
+import { ToasterEmitter } from '../../../../externals/toasterEmitter'
 
 export class IndexGuestOAuthButton extends React.Component {
   constructor(props, state) {
@@ -47,7 +47,6 @@ export class IndexGuestOAuthButton extends React.Component {
             enabled: !!(firestoreUserData || ({} as any)).enabled
           }
         }
-        console.log(payload)
         await updateUser(payload)
       }
     } catch (e) {

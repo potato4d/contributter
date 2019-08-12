@@ -29,6 +29,8 @@ const app = !firebase.apps.length
 const firestore = app.firestore()
 
 export default app
+
+// TODO: 接続が終わった Firestore を使い回す
 // export const Application = app
 // export const auth = firebase.auth()
 // export const firestore = firebase.firestore()

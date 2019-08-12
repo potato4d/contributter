@@ -1,14 +1,12 @@
 import * as React from 'react'
 import '../styles/bundle.css'
+import firebaseApp, { fetchUser } from '../externals/firebaseApp'
 import { AppWrapper } from '../components/common/AppWrapper'
 import { AppHeader } from '../components/common/AppHeader'
-import firebaseApp, { fetchUser } from '../externals/firebaseApp'
-import app from '../externals/firebaseApp'
 import { IndexLoadingContentLoader } from '../components/partials/index/IndexLoadingContent'
 import { IndexUserContent } from '../components/partials/index/IndexUserContent'
 import { IndexGuestContent } from '../components/partials/index/IndexGuestContent'
 import { UserData } from '../types/firestore'
-import { ToasterEmitter } from '../externals/toastEmitter'
 
 interface Props {}
 
@@ -32,16 +30,16 @@ class IndexPage extends React.Component<Props, State> {
 
   componentDidMount() {
     setTimeout(() => {
-      const user = app.auth().currentUser
+      const user = firebaseApp.auth().currentUser
       if (user) {
         this.setUserData(user)
       }
     }, 0)
     setTimeout(() => {
-      const user = app.auth().currentUser
+      const user = firebaseApp.auth().currentUser
       this.setUserData(user)
     }, 3000)
-    app.auth().onAuthStateChanged(u => {
+    firebaseApp.auth().onAuthStateChanged(u => {
       this.setUserData(u)
     })
   }
