@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { AppGitHubIcon, AppTwitterIcon } from '../../../common/Icons/AppIcons'
+import { AppGitHubIcon, AppTwitterIcon } from '../../../common/AppIcons'
 import { AppButton } from '../../../common/AppButton'
 
 interface Props {

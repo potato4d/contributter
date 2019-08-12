@@ -18,7 +18,7 @@ export class IndexGuestOAuthButton extends React.Component {
         firebaseApp
           .auth()
           .signInWithPopup(new firebase.auth.TwitterAuthProvider())
-          .then((result) => {
+          .then(result => {
             console.log(result)
           })
       }

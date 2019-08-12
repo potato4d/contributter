@@ -3,7 +3,7 @@ import {
   AppGitHubIcon,
   AppLinkIcon,
   AppTwitterIcon
-} from '../../common/Icons/AppIcons'
+} from '../../common/AppIcons'
 import { IndexUserContentForm } from './UserContent/IndexUserContentForm'
 
 interface Props {
@@ -17,7 +17,16 @@ const LinkStateView: React.FC<{ isActive: boolean }> = ({ isActive }) => (
         <AppGitHubIcon />
       </div>
       <div className="w-3 h-1"></div>
-      <div onClick={() => {alert(1)}} className={`w-6 h-6 cursor-pointer ${isActive ? 'text-green-400 hover:text-red-600' : 'hover:text-green-400'}`}>
+      <div
+        onClick={() => {
+          alert(1)
+        }}
+        className={`w-6 h-6 cursor-pointer ${
+          isActive
+            ? 'text-green-400 hover:text-red-600'
+            : 'hover:text-green-400'
+        }`}
+      >
         <AppLinkIcon />
       </div>
       <div className="w-3 h-1"></div>
