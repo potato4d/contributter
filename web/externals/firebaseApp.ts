@@ -50,10 +50,6 @@ export async function updateUser(
   const user = await fetchUser(userData.uid)
   const userRef = firestore.collection('users').doc(userData.uid)
   try {
-    console.log({
-      ...user,
-      ...userData
-    })
     userRef.set({
       ...user,
       ...userData

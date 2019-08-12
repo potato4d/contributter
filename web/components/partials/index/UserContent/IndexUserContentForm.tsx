@@ -56,6 +56,7 @@ export const IndexUserContentForm: React.FC<Props> = props => {
       </div>
       <div className="pt-4 flex justify-center">
         <AppButton
+          disabled={GitHubID === props.user.GitHubID}
           onClick={() => {
             props.onSubmit(GitHubID)
           }}

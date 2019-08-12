@@ -33,7 +33,10 @@ export class IndexUserContent extends React.Component<Props, {}> {
         }化しました`
       })
     } catch (e) {
-      alert('更新に失敗しました。')
+      ToasterEmitter.dispatch({
+        type: 'error',
+        body: '更新に失敗しました'
+      })
     }
   }
 
@@ -49,7 +52,10 @@ export class IndexUserContent extends React.Component<Props, {}> {
         body: '連携 ID を更新しました'
       })
     } catch (e) {
-      alert('更新に失敗しました。')
+      ToasterEmitter.dispatch({
+        type: 'error',
+        body: '更新に失敗しました'
+      })
     }
   }
 

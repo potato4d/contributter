@@ -7,6 +7,7 @@ import firebaseApp, {
 } from '../../../../externals/firebaseApp'
 import { AppButton } from '../../../common/AppButton'
 import { UserData } from '../../../../types/firestore'
+import { ToasterEmitter } from '../../../../externals/toastEmitter'
 
 export class IndexGuestOAuthButton extends React.Component {
   constructor(props, state) {
@@ -46,8 +47,10 @@ export class IndexGuestOAuthButton extends React.Component {
         })
       }
     } catch (e) {
-      console.log(e)
-      alert('ログインに失敗しました')
+      ToasterEmitter.dispatch({
+        type: 'error',
+        body: 'ログインに失敗しました'
+      })
     }
   }
 
