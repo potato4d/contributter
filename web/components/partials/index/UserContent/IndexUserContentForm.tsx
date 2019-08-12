@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { AppGitHubIcon, AppTwitterIcon } from '../../../common/AppIcons'
 import { AppButton } from '../../../common/AppButton'
+import { UserData } from '../../../../types/firestore'
 
 interface Props {
-  GitHubID: string
-  TwitterID: string
+  user: UserData
 }
 
 export const IndexUserContentForm: React.FC<Props> = props => {
-  const [GitHubID, setGitHubID] = React.useState(props.GitHubID)
+  const [GitHubID, setGitHubID] = React.useState(props.user.GitHubID)
   return (
     <React.Fragment>
       <div className="flex justify-center">
@@ -32,9 +32,9 @@ export const IndexUserContentForm: React.FC<Props> = props => {
         <div className="relative">
           <input
             readOnly
-            defaultValue={props.TwitterID}
+            defaultValue={`${props.user.TwitterID}`}
             type="text"
-            className="w-32 pl-8 pr-1 h-6 text-xs appearance-none bg-transparent border text-gray-600 rounded-sm border-gray-400"
+            className="w-32 pl-8 pr-1 h-6 text-xs appearance-none bg-gray-100 border text-gray-700 rounded-sm border-gray-400"
           />
           <div
             style={{ left: '0px', top: '1px' }}
@@ -48,7 +48,7 @@ export const IndexUserContentForm: React.FC<Props> = props => {
       </div>
       <div className="pt-4 flex justify-center">
         <AppButton onClick={() => {}}>
-          <span>Update GitHub ID</span>
+          <span>Update Configuration</span>
         </AppButton>
       </div>
     </React.Fragment>

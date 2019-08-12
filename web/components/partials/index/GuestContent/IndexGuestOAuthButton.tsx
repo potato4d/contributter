@@ -3,6 +3,7 @@ import * as firebase from 'firebase/app'
 import 'firebase/auth'
 import firebaseApp from '../../../../externals/firebaseApp'
 import { AppButton } from '../../../common/AppButton'
+import { UserData } from '../../../../types/firestore'
 
 export class IndexGuestOAuthButton extends React.Component {
   constructor(props, state) {
@@ -15,16 +16,44 @@ export class IndexGuestOAuthButton extends React.Component {
   async handleClickSignInWithTwitter() {
     try {
       if (location) {
-        firebaseApp
+        const result = await firebaseApp
           .auth()
           .signInWithPopup(new firebase.auth.TwitterAuthProvider())
-          .then(result => {
-            console.log(result)
-          })
+        const firestore = firebaseApp.firestore()
+        const credential: {
+          accessToken: string
+          secret: string
+        } = result.credential as any
+
+        const userRef = firestore.collection('users').doc(result.user.uid)
+        const userData: UserData = {
+          uid: result.user.uid,
+          accessToken: credential.accessToken,
+          accessSecret: credential.secret,
+          TwitterID: result.additionalUserInfo.username,
+          enabled: false,
+          iconURL: (result.additionalUserInfo
+            .profile as any).profile_image_url.replace('_normal', '_400x400')
+        }
+
+        let firestoreUserData: UserData
+        try {
+          firestoreUserData = await userRef
+            .get()
+            .then(doc => doc.data() as UserData)
+        } catch (e) {}
+        const r = await userRef.set({
+          ...(firestoreUserData || {}),
+          ...userData,
+          ...{
+            GitHubID: (firestoreUserData || ({} as any)).GitHubID! || '',
+            enabled: (firestoreUserData || ({} as any)).enabled
+          }
+        })
       }
     } catch (e) {
       console.log(e)
-      alert(2)
+      alert('ログインに失敗しました')
     }
   }
 

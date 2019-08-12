@@ -1,4 +1,11 @@
 export type UserData = {
-  GitHubID: string
+  uid: string
+  GitHubID?: string
   TwitterID: string
+
+  iconURL: string
+  accessToken: string
+  accessSecret: string
+
+  enabled: boolean
 }

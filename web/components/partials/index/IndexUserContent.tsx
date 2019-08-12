@@ -5,12 +5,14 @@ import {
   AppTwitterIcon
 } from '../../common/AppIcons'
 import { IndexUserContentForm } from './UserContent/IndexUserContentForm'
+import { UserData } from '../../../types/firestore'
 
 interface Props {
+  user?: UserData
   isActive: boolean
 }
 
-const LinkStateView: React.FC<{ isActive: boolean }> = ({ isActive }) => (
+const LinkStateView: React.FC<Props> = props => (
   <React.Fragment>
     <div className="py-4 mb-0 pb-0 flex text-gray-300 justify-center items-center mx-auto">
       <div className="w-6 h-6">
@@ -22,7 +24,7 @@ const LinkStateView: React.FC<{ isActive: boolean }> = ({ isActive }) => (
           alert(1)
         }}
         className={`w-6 h-6 cursor-pointer ${
-          isActive
+          props.isActive
             ? 'text-green-400 hover:text-red-600'
             : 'hover:text-green-400'
         }`}
@@ -36,9 +38,9 @@ const LinkStateView: React.FC<{ isActive: boolean }> = ({ isActive }) => (
     </div>
     <div className="p-0 flex items-center justify-center m-0 text-center text-shadow text-center text-xs py-4">
       <span className="inline-block ml-1">
-        現在連携は <b>{isActive ? '有効' : '無効'}</b>&nbsp;
-      </span>{' '}
-      になっています。
+        The scheduler is currently{' '}
+        <b>{props.isActive ? 'active' : 'inactive'}</b>.
+      </span>
     </div>
   </React.Fragment>
 )
@@ -46,8 +48,8 @@ const LinkStateView: React.FC<{ isActive: boolean }> = ({ isActive }) => (
 export const IndexUserContent: React.FC<Props> = (props: Props) => (
   <div>
     <div className="w-1/2 mx-auto">
-      <LinkStateView isActive={props.isActive} />
-      <IndexUserContentForm GitHubID="potato4d" TwitterID="potato4d" />
+      <LinkStateView user={props.user} isActive={props.isActive} />
+      <IndexUserContentForm user={props.user} />
     </div>
   </div>
 )

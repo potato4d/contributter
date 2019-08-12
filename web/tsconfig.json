@@ -16,7 +16,10 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "types": [
+      "node"
+    ]
   },
   "exclude": [
     "node_modules"
