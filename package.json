@@ -1,0 +1,9 @@
+{
+  "scripts": {
+    "format": "prettier './**/*.{ts,tsx}' --write"
+  },
+  "devDependencies": {
+    "firebase-tools": "^7.2.2",
+    "prettier": "^1.18.2"
+  }
+}

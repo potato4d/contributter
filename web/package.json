@@ -7,7 +7,6 @@
     "dev": "next",
     "build": "next build",
     "build:tailwind": "yarn tailwind build styles/index.css -c tailwind.config.js -o styles/bundle.css",
-    "format": "prettier './**/*.{ts,tsx}' --write",
     "start": "next start"
   },
   "dependencies": {
