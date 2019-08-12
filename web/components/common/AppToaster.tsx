@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { AppAlertIcon } from './AppIcons'
-import { ToastData, ToasterEmitter } from '../../externals/toastEmitter'
+import { ToastData, ToasterEmitter } from '../../externals/toasterEmitter'
 
 interface AppToasterState {
   toasts: ToastData[]
