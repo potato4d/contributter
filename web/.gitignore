@@ -1,0 +1,10 @@
+.next
+node_modules
+
+.DS_Store
+
+# Tailwind.css
+styles/bundle.css
+
+# Next.js
+out
