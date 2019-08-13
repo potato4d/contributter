@@ -48,6 +48,7 @@ export class IndexGuestOAuthButton extends React.Component {
           }
         }
         await updateUser(payload)
+        location.reload()
       }
     } catch (e) {
       ToasterEmitter.dispatch({
