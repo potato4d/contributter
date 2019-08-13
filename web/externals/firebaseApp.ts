@@ -37,7 +37,7 @@ export default app
 
 export async function fetchUser(uid: string): Promise<UserData | null> {
   let firestoreUserData: UserData
-  const userRef = firestore.collection('users').doc(uid)
+  const userRef = firestore.collection('users').doc(`${uid}`)
   try {
     firestoreUserData = await userRef.get().then(doc => doc.data() as UserData)
   } catch (e) {
@@ -51,9 +51,9 @@ export async function updateUser(
 ): Promise<boolean> {
   let user: UserData
   try {
-    user = await fetchUser(userData.uid)
+    user = await fetchUser(`${userData.uid}`)
   } catch (e) {}
-  const userRef = firestore.collection('users').doc(userData.uid)
+  const userRef = firestore.collection('users').doc(`${userData.uid}`)
   try {
     userRef.set({
       ...(user || {}),

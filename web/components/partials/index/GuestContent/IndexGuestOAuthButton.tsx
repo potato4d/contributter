@@ -28,7 +28,7 @@ export class IndexGuestOAuthButton extends React.Component {
           secret: string
         } = result.credential as any
         const userData: UserData = {
-          uid: result.user.uid,
+          uid: `${result.user.uid}`,
           accessToken: credential.accessToken,
           accessSecret: credential.secret,
           TwitterID: result.additionalUserInfo.username,

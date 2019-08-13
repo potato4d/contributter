@@ -40,7 +40,7 @@ export const tweet = functions.firestore
     const tweetRequest = snapshot.data() as TweetRequest
     const userData = await firestore
       .collection('users')
-      .doc(tweetRequest.uid)
+      .doc(`${tweetRequest.uid}`)
       .get()
       .then(snapshot => snapshot.data() as UserData)
     if (!(userData.GitHubID && userData.enabled)) {
