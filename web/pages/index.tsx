@@ -45,8 +45,11 @@ class IndexPage extends React.Component<Props, State> {
   }
 
   subscribeUser() {
+    if (!this.state.user) {
+      return
+    }
     const firestore = firebaseApp.firestore()
-    const userRef = firestore.collection('users').doc(this.state.user!.uid)
+    const userRef = firestore.collection('users').doc(`${this.state.user.uid}`)
     userRef.onSnapshot(snapshot => {
       const user: UserData = snapshot.data() as UserData
       this.setState({
