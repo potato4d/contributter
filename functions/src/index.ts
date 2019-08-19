@@ -14,24 +14,65 @@ import { crawl } from './utils/crawler'
 const environments = functions.config() as Environments
 const firestore = admin.firestore()
 
+async function clearTweetRequest() {
+  const tweetRequestsSnapshot = await firestore.collection('tweetRequest').get()
+  const tweetRequest: TweetRequest[] = []
+  tweetRequestsSnapshot.forEach(doc => {
+    tweetRequest.push({
+      id: doc.id,
+      ...(doc.data() as TweetRequest)
+    })
+  })
+  await Promise.all(
+    tweetRequest.map(async tr => {
+      if (tr.keep!) {
+        return
+      }
+      await firestore
+        .collection('tweetRequest')
+        .doc(tr.id!)
+        .delete()
+    })
+  )
+  return
+}
+
+async function addTweetRequests() {
+  const usersSnapshot = await firestore.collection('users').get()
+  const users: UserData[] = []
+  usersSnapshot.forEach(doc => {
+    users.push(doc.data() as UserData)
+  })
+  await Promise.all(
+    users.map(async u => {
+      const tr: TweetRequest = {
+        uid: u.uid
+      }
+      await firestore.collection('tweetRequest').add(tr)
+    })
+  )
+  return
+}
+
+export const dailyClearTweetRequest = functions.pubsub
+  .schedule('1 12 * * *')
+  .timeZone('Asia/Tokyo')
+  .onRun(async () => {
+    await clearTweetRequest()
+  })
+
 export const dailyTweet = functions.pubsub
   .schedule('1 0 * * *')
   .timeZone('Asia/Tokyo')
-  .onRun(async context => {
-    const usersSnapshot = await firestore.collection('users').get()
-    const users: UserData[] = []
-    usersSnapshot.forEach(doc => {
-      users.push(doc.data() as UserData)
-    })
-    await Promise.all(
-      users.map(async u => {
-        const tr: TweetRequest = {
-          uid: u.uid
-        }
-        firestore.collection('tweetRequest').add(tr)
-      })
-    )
-    return
+  .onRun(async () => {
+    await addTweetRequests()
+  })
+
+export const dailyTweetAgain = functions.pubsub
+  .schedule('16 0 * * *')
+  .timeZone('Asia/Tokyo')
+  .onRun(async () => {
+    await addTweetRequests()
   })
 
 export const tweet = functions.firestore
