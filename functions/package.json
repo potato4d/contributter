@@ -1,5 +1,6 @@
 {
   "name": "functions",
+  "version": "1.0.0",
   "scripts": {
     "build": "tsc",
     "serve": "npm run build && firebase serve --only functions",
@@ -21,7 +22,7 @@
     "twitter": "^1.7.1"
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "devDependencies": {
     "@types/jest": "^24.0.17",
@@ -29,6 +30,5 @@
     "ts-jest": "^24.0.2",
     "ts-node": "^8.3.0",
     "typescript": "^3.2.2"
-  },
-  "private": true
+  }
 }

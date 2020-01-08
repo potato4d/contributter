@@ -4,9 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "next",
+    "serve": "next",
     "build": "next build",
-    "build:tailwind": "yarn tailwind build styles/index.css -c tailwind.config.js -o styles/bundle.css",
+    "tailwind-build": "yarn tailwind build styles/index.css -c tailwind.config.js -o styles/bundle.css",
     "export": "next export",
     "start": "next start"
   },
