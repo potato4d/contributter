@@ -4,6 +4,7 @@
     "build": "npm-run-all -p build:*",
     "serve": "npm-run-all -p serve:*",
     "start": "npm-run-all -p start:*",
+    "export": "npm-run-all -p export:*",
     "build:functions": "yarn workspace functions build",
     "serve:functions": "yarn workspace functions serve",
     "shell:functions": "yarn workspace functions shell",

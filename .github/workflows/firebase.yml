@@ -30,7 +30,9 @@ jobs:
     - name: Build Application
       run: |
         yarn
+        yarn tailwind:web
         yarn build
+        yarn export
     - name: Deploy
       run: |
         yarn firebase deploy --token "$FIREBASE_TOKEN" --project ${{ secrets.FIREBASE_PROJECT_ID }}
