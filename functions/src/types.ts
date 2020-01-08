@@ -11,7 +11,9 @@ export type Environments = {
 }
 
 export type TweetRequest = {
+  id?: string
   uid: string
+  keep?: boolean
 }
 
 export type UserData = {
