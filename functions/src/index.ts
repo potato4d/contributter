@@ -75,6 +75,13 @@ export const dailyTweetAgain = functions.pubsub
     await addTweetRequests()
   })
 
+export const dailyTweetAgainAgain = functions.pubsub
+  .schedule('31 0 * * *')
+  .timeZone('Asia/Tokyo')
+  .onRun(async () => {
+    await addTweetRequests()
+  })
+
 export const tweet = functions.firestore
   .document('tweetRequest/{tweetRequestId}')
   .onCreate(async snapshot => {
