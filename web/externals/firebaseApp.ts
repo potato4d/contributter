@@ -55,7 +55,7 @@ export async function updateUser(
   } catch (e) {}
   const userRef = firestore.collection('users').doc(`${userData.uid}`)
   try {
-    userRef.set({
+    await userRef.set({
       ...(user || {}),
       ...userData
     })
