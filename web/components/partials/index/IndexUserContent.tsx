@@ -28,9 +28,7 @@ export class IndexUserContent extends React.Component<Props, {}> {
       })
       ToasterEmitter.dispatch({
         type: 'info',
-        body: `ツイートを${
-          !this.props.user.enabled ? '有効' : '無効'
-        }化しました`
+        body: `ツイートを${this.props.user.enabled ? '有効' : '無効'}化しました`
       })
     } catch (e) {
       ToasterEmitter.dispatch({

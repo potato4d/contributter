@@ -2,6 +2,7 @@ import * as React from 'react'
 
 export const AppLogo: React.FC = () => (
   <svg
+    id="logo"
     style={{
       width: '100%',
       height: 'auto'

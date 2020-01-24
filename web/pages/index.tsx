@@ -40,6 +40,9 @@ class IndexPage extends React.Component<Props, State> {
       this.setUserData(user)
     }, 3000)
     firebaseApp.auth().onAuthStateChanged(u => {
+      if (this.state.user) {
+        return
+      }
       this.setUserData(u)
     })
   }
