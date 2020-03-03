@@ -13,10 +13,9 @@ $ yarn
 ### web
 
 ```shell
-$ cd web
 $ yarn
-$ yarn build:tailwind # precompile css
-$ yarn dev
+$ yarn tailwind:web # precompile css
+$ yarn serve:web
 ```
 
 ### functions
