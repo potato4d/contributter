@@ -42,3 +42,4 @@ $ yarn firebase deploy --only hosting
 ```shell
 $ yarn firebase deploy --only functions
 ```
+
