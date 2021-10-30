@@ -95,7 +95,7 @@ export const tweet = functions.firestore
       return
     }
     const contribution = await crawl(userData.GitHubID)
-    const status = `${userData.TwitterID} さんの ${contribution.date} の contribution 数: ${contribution.count}\n #contributter_report`
+    const status = `${userData.TwitterID} さんの ${contribution.date} の contribution 数: ${contribution.count}\n #contributter_daily_report`
     await execTweet(
       {
         consumer_key: environments.twitter.ck || process.env.TWITTER_CK!,
