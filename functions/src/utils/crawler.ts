@@ -16,10 +16,10 @@ export async function crawl(TwitterID: string): Promise<ContributionLog> {
     return Promise.reject()
   }
   const $ = cheerio.load(data)
-  const lastRect = $('rect')[$('rect').length - 1]
+  const lastRect = $('g rect')[$('g rect').length - 1]
   console.log({
     url: `https://github.com/${TwitterID}`,
-    length: $('rect').length ,
+    length: $('g rect').length ,
     lastRect
   })
   return {
