@@ -17,6 +17,11 @@ export async function crawl(TwitterID: string): Promise<ContributionLog> {
   }
   const $ = cheerio.load(data)
   const lastRect = $('rect')[$('rect').length - 1]
+  console.log({
+    url: `https://github.com/${TwitterID}`,
+    length: $('rect').length ,
+    lastRect
+  })
   return {
     date: lastRect.attribs['data-date'].replace(/-/g, '/'),
     count: ~~lastRect.attribs['data-count']
