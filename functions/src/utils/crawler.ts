@@ -6,7 +6,7 @@ export async function crawl(TwitterID: string): Promise<ContributionLog> {
   let data: string
   try {
     const response = await axios.get(
-      `https://github.com/users/${TwitterID}/contributions`
+      `https://github.com/${TwitterID}`
     )
     data = response.data
     if (!data) {
