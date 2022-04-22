@@ -16,7 +16,7 @@
     "tailwind:web": "yarn workspace web tailwind-build",
     "start:web": "yarn workspace web start",
     "export:web": "yarn workspace web export",
-    "format": "prettier './**/*.{ts,tsx}' --write"
+    "format": "prettier './**/*.{ts,tsx,css}' --write"
   },
   "devDependencies": {
     "firebase-tools": "^7.2.2",
