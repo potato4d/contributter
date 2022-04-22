@@ -6,9 +6,7 @@ import { ContributionLog } from '../types'
 export async function crawl(TwitterID: string): Promise<ContributionLog> {
   let data: string
   try {
-    const response = await axios.get(
-      `https://github.com/${TwitterID}`
-    )
+    const response = await axios.get(`https://github.com/${TwitterID}`)
     data = response.data
     if (!data) {
       return Promise.reject()
@@ -24,7 +22,7 @@ export async function crawl(TwitterID: string): Promise<ContributionLog> {
   }
   console.log({
     url: `https://github.com/${TwitterID}`,
-    length: $('g rect').length ,
+    length: $('g rect').length,
     lastRect
   })
   return {
