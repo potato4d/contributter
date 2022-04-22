@@ -2,11 +2,11 @@ import axios from 'axios'
 import cheerio from 'cheerio'
 import { ContributionLog } from '../types'
 
-export async function crawl(TwitterID: string): Promise<ContributionLog> {
+export async function crawl(GitHubID: string): Promise<ContributionLog> {
   let data: string
   try {
     const response = await axios.get(
-      `https://github.com/${TwitterID}`
+      `https://github.com/${GitHubID}`
     )
     data = response.data
     if (!data) {
@@ -18,7 +18,7 @@ export async function crawl(TwitterID: string): Promise<ContributionLog> {
   const $ = cheerio.load(data)
   const lastRect = $('g rect')[$('g rect').length - 1]
   console.log({
-    url: `https://github.com/${TwitterID}`,
+    url: `https://github.com/${GitHubID}`,
     length: $('g rect').length ,
     lastRect
   })
