@@ -14,7 +14,7 @@
     "@types/axios": "^0.14.0",
     "@types/cheerio": "^0.22.31",
     "@types/twitter": "^1.7.0",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "cheerio": "^1.0.0-rc.12",
     "dayjs": "^1.8.15",
     "firebase-admin": "^11.4.1",
