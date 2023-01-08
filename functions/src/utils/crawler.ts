@@ -16,14 +16,14 @@ export async function crawl(TwitterID: string): Promise<ContributionLog> {
     return Promise.reject()
   }
   const $ = cheerio.load(data)
-  const lastRect = $('g rect')[$('g rect').length - 1]
-  console.log({
-    url: `https://github.com/${TwitterID}`,
-    length: $('g rect').length ,
-    lastRect
-  })
+  const lastRect: any = $('g rect')[$('g rect').length - 1]
+  if (!lastRect || !lastRect.attribs) {
+    throw new Error('missing element')
+  }
+  const contributionText = lastRect.children[0].data.split(' contributions')[0]
+  const contributions = contributionText === 'No' ? 0 : contributionText;
   return {
     date: lastRect.attribs['data-date'].replace(/-/g, '/'),
-    count: ~~lastRect.attribs['data-count']
+    count: ~~contributions
   }
 }

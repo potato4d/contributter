@@ -19,9 +19,9 @@
     "format": "prettier './**/*.{ts,tsx}' --write"
   },
   "devDependencies": {
-    "firebase-tools": "^7.2.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "firebase-tools": "^11.20.0"
   },
   "workspaces": [
     "functions",

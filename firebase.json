@@ -1,4 +1,7 @@
 {
+  "functions": {
+    "runtime": "nodejs16"
+  },
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
